@@ -16,18 +16,17 @@
     "module": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@nexa-ui/angular": ["../../nexa-ui/packages/angular/src/index.ts"],
-      "@nexa-ui/themes": ["../../nexa-ui/packages/themes/src/index.ts"],
-      "@nexa-ui/design-tokens": ["../../nexa-ui/packages/design-tokens/src/index.ts"],
-      "@nexa-ui/button": ["../../nexa-ui/packages/button/src/index.ts"],
-      "@nexa-ui/navigation": ["../../nexa-ui/packages/navigation/src/index.ts"],
-      "@nexa-ui/selection": ["../../nexa-ui/packages/selection/src/index.ts"],
-      "@nexa-ui/data-display": ["../../nexa-ui/packages/data-display/src/index.ts"],
-      "@nexa-ui/dialogs": ["../../nexa-ui/packages/dialogs/src/index.ts"],
-      "@nexa-ui/forms": ["../../nexa-ui/packages/forms/src/index.ts"],
-      "@nexa-ui/icons": ["../../nexa-ui/packages/icons/src/index.ts"],
-      "@nexa-ui/admin": ["../../nexa-ui/packages/admin/src/index.ts"],
-      "@nexa-ui/headless": ["../../nexa-ui/packages/headless/src/index.ts"]
+      "@nexa-ui/button": ["../../../nexa-ui/packages/button/src/index.ts"],
+      "@nexa-ui/themes": ["../../../nexa-ui/packages/themes/src/index.ts"],
+      "@nexa-ui/design-tokens": ["../../../nexa-ui/packages/design-tokens/src/index.ts"],
+      "@nexa-ui/navigation": ["../../../nexa-ui/packages/navigation/src/index.ts"],
+      "@nexa-ui/selection": ["../../../nexa-ui/packages/selection/src/index.ts"],
+      "@nexa-ui/data-display": ["../../../nexa-ui/packages/data-display/src/index.ts"],
+      "@nexa-ui/dialogs": ["../../../nexa-ui/packages/dialogs/src/index.ts"],
+      "@nexa-ui/forms": ["../../../nexa-ui/packages/forms/src/index.ts"],
+      "@nexa-ui/icons": ["../../../nexa-ui/packages/icons/src/index.ts"],
+      "@nexa-ui/admin": ["../../../nexa-ui/packages/admin/src/index.ts"],
+      "@nexa-ui/headless": ["../../../nexa-ui/packages/headless/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

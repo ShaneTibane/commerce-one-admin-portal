@@ -1,5 +1,4 @@
 // Components
-export { UiButtonComponent } from './button/ui-button';
 export { UiInputComponent } from './input/ui-input';
 export { UiCardComponent } from './card/ui-card';
 export { UiBadgeComponent } from './badge/ui-badge';

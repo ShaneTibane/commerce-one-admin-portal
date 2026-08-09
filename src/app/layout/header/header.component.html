@@ -1,0 +1,160 @@
+<header [class]="headerClasses()">
+  <div class="nui-header__left">
+    @if (showMenuToggle()) {
+      <button
+        class="nui-header__menu-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        (click)="onMenuToggle()"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    }
+
+    @if (brand(); as b) {
+      <div class="nui-header__brand" (click)="onBrandClick()" role="button" tabindex="0" (keydown.enter)="onBrandClick()">
+        @if (b.logoSrc) {
+          <img [src]="b.logoSrc" [alt]="b.logoAlt || b.name || 'Logo'" class="nui-header__logo" />
+        }
+        @if (b.name) {
+          <div class="nui-header__brand-text">
+            <span class="nui-header__brand-name">{{ b.name }}</span>
+            @if (b.subtitle) {
+              <span class="nui-header__brand-subtitle">{{ b.subtitle }}</span>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="nui-header__center">
+    @if (search().enabled !== false) {
+      <div class="nui-header__search">
+        <svg class="nui-header__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input
+          type="text"
+          class="nui-header__search-input"
+          [placeholder]="search().placeholder || 'Search anything...'"
+          [value]="searchValue()"
+          (input)="onSearchInput($event)"
+          (keydown)="onSearchKeydown($event)"
+          (focus)="onSearchFocus()"
+          aria-label="Search"
+        />
+        @if (search().shortcutHint) {
+          <span class="nui-header__search-shortcut">{{ search().shortcutHint }}</span>
+        }
+      </div>
+    }
+
+    @if (showTenantSelector() && selectedTenant()) {
+      <div class="nui-header__tenant">
+        <button
+          class="nui-header__tenant-trigger"
+          type="button"
+          aria-haspopup="listbox"
+          [attr.aria-expanded]="tenantDropdownOpen()"
+          (click)="toggleTenantDropdown()"
+        >
+          @if (selectedTenant()?.icon) {
+            <img [src]="selectedTenant()!.icon" alt="" class="nui-header__tenant-icon" />
+          } @else {
+            <svg class="nui-header__tenant-icon-default" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 21V3h18v18H3zm2-2h14V5H5v14zm2-2h4v-4H7v4zm0-6h4V7H7v4zm6 6h4v-4h-4v4zm0-6h4V7h-4v4z"/>
+            </svg>
+          }
+          <div class="nui-header__tenant-info">
+            <span class="nui-header__tenant-label">{{ tenantLabel() }}</span>
+            <span class="nui-header__tenant-name">{{ selectedTenant()!.name }}</span>
+          </div>
+          <svg class="nui-header__tenant-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+        @if (tenantDropdownOpen()) {
+          <ul class="nui-header__tenant-dropdown" role="listbox">
+            @for (tenant of tenants(); track tenant.id) {
+              <li
+                role="option"
+                class="nui-header__tenant-option"
+                [class.nui-header__tenant-option--selected]="tenant.id === selectedTenant()?.id"
+                [attr.aria-selected]="tenant.id === selectedTenant()?.id"
+                (click)="selectTenant(tenant)"
+              >
+                {{ tenant.name }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="nui-header__right">
+    @if (showNotifications()) {
+      <button
+        class="nui-header__icon-btn"
+        type="button"
+        aria-label="Notifications"
+        (click)="onNotificationClick()"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        @if (unreadCount() > 0) {
+          <span class="nui-header__badge">{{ unreadCount() > 99 ? '99+' : unreadCount() }}</span>
+        }
+      </button>
+    }
+
+    @if (showHelp()) {
+      <button
+        class="nui-header__icon-btn"
+        type="button"
+        aria-label="Help"
+        (click)="onHelpClick()"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </button>
+    }
+
+    @if (showUserProfile() && user()) {
+      <button
+        class="nui-header__user"
+        type="button"
+        aria-haspopup="menu"
+        (click)="onUserMenuClick()"
+      >
+        <div class="nui-header__avatar">
+          @if (user()!.avatarSrc) {
+            <img [src]="user()!.avatarSrc" [alt]="user()!.name" class="nui-header__avatar-img" />
+          } @else {
+            <span class="nui-header__avatar-initials">{{ user()!.initials || user()!.name?.charAt(0) }}</span>
+          }
+        </div>
+        <div class="nui-header__user-info">
+          <span class="nui-header__user-name">{{ user()!.name }}</span>
+          @if (user()!.role) {
+            <span class="nui-header__user-role">{{ user()!.role }}</span>
+          }
+        </div>
+        <svg class="nui-header__user-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+    }
+  </div>
+</header>

@@ -1,0 +1,22 @@
+<button
+  [type]="type()"
+  [disabled]="instance().isDisabled"
+  [class]="instance().classes"
+  [style]="instance().style"
+  [attr.aria-busy]="instance().ariaProps['aria-busy'] || null"
+  [attr.aria-label]="instance().ariaProps['aria-label'] || null"
+  [attr.aria-disabled]="instance().ariaProps['aria-disabled'] || null"
+  (click)="handleClick($event)"
+>
+  @if (instance().isLoading) {
+    <span class="nui-btn__spinner" aria-hidden="true">
+      <span class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"></span>
+    </span>
+  }
+  @if (icon()) {
+    <span class="nui-btn__icon-start" aria-hidden="true">{{ icon() }}</span>
+  }
+  <span class="nui-btn__content">
+    <ng-content />
+  </span>
+</button>

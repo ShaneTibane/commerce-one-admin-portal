@@ -1,13 +1,21 @@
-<div class="app-container">
-  <header class="app-header">
-    <ui-button [variant]="'outline'" [size]="'sm'" (click)="toggleTheme()">
-      {{ isDark() ? '☀️ Light Mode' : '🌙 Dark Mode' }}
-    </ui-button>
-  </header>
+<app-header
+  [brand]="brand"
+  [search]="{ placeholder: 'Search anything...', shortcutHint: '⌘ K' }"
+  [tenants]="tenants"
+  [selectedTenant]="selectedTenant()"
+  tenantLabel="Tenant"
+  [user]="user"
+  [notifications]="notifications()"
+  (menuToggle)="toggleSidebar()"
+  (tenantChange)="onTenantChange($event)"
+  (searchSubmit)="onSearch($event)"
+  (notificationClick)="openNotifications()"
+  (helpClick)="openHelp()"
+  (userMenuClick)="toggleUserMenu()"
+/>
 
-  <h1>Admin Portal</h1>
-  <p>Application is running.</p>
-</div>
+<main class="app-main">
+  <router-outlet />
+</main>
 
-<router-outlet />
 <ui-toast-container />

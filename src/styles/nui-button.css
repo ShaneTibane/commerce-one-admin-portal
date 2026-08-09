@@ -1,0 +1,174 @@
+/* ─── NUI Button Styles ─────────────────────────────────────────────────────── */
+/* Token-driven: all colors come from --nui-* CSS custom properties */
+/* Source: @nexa-ui/button — do not modify locally */
+
+.nui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border-radius: var(--nui-radius-button, 0.375rem);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────────── */
+.nui-btn--xs { padding: 0.25rem 0.5rem; font-size: 0.75rem; min-height: 1.75rem; }
+.nui-btn--sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; min-height: 2rem; }
+.nui-btn--md { padding: 0.5rem 1rem; font-size: 0.875rem; min-height: 2.5rem; }
+.nui-btn--lg { padding: 0.625rem 1.25rem; font-size: 1rem; min-height: 2.75rem; }
+.nui-btn--xl { padding: 0.75rem 1.5rem; font-size: 1.125rem; min-height: 3rem; }
+
+/* ─── Filled variant ─────────────────────────────────────────────────────────── */
+.nui-btn--filled.nui-btn--primary {
+  background-color: var(--nui-color-primary-solid);
+  color: var(--nui-color-primary-fg);
+}
+.nui-btn--filled.nui-btn--primary:hover { background-color: var(--nui-color-primary-hover); }
+.nui-btn--filled.nui-btn--primary:active { background-color: var(--nui-color-primary-pressed); }
+
+.nui-btn--filled.nui-btn--secondary {
+  background-color: var(--nui-color-secondary-solid);
+  color: var(--nui-color-secondary-fg);
+}
+.nui-btn--filled.nui-btn--secondary:hover { background-color: var(--nui-color-secondary-hover); }
+.nui-btn--filled.nui-btn--secondary:active { background-color: var(--nui-color-secondary-pressed); }
+
+.nui-btn--filled.nui-btn--tertiary {
+  background-color: var(--nui-color-tertiary-solid);
+  color: var(--nui-color-tertiary-fg);
+}
+.nui-btn--filled.nui-btn--tertiary:hover { background-color: var(--nui-color-tertiary-hover); }
+.nui-btn--filled.nui-btn--tertiary:active { background-color: var(--nui-color-tertiary-pressed); }
+
+.nui-btn--filled.nui-btn--error {
+  background-color: var(--nui-color-error-solid);
+  color: var(--nui-color-error-fg);
+}
+.nui-btn--filled.nui-btn--error:hover { background-color: var(--nui-color-error-hover); }
+
+.nui-btn--filled.nui-btn--success {
+  background-color: var(--nui-color-success-solid);
+  color: var(--nui-color-success-fg);
+}
+.nui-btn--filled.nui-btn--success:hover { background-color: var(--nui-color-success-hover); }
+
+.nui-btn--filled.nui-btn--warning {
+  background-color: var(--nui-color-warning-solid);
+  color: var(--nui-color-warning-fg);
+}
+.nui-btn--filled.nui-btn--warning:hover { background-color: var(--nui-color-warning-hover); }
+
+.nui-btn--filled.nui-btn--neutral {
+  background-color: var(--nui-color-neutral-600);
+  color: #fff;
+}
+.nui-btn--filled.nui-btn--neutral:hover { background-color: var(--nui-color-neutral-700); }
+
+/* ─── Outlined variant ───────────────────────────────────────────────────────── */
+.nui-btn--outlined {
+  background-color: transparent;
+  border: 1.5px solid currentColor;
+}
+.nui-btn--outlined.nui-btn--primary {
+  color: var(--nui-color-primary-solid);
+  border-color: var(--nui-color-primary-border);
+}
+.nui-btn--outlined.nui-btn--primary:hover { background-color: var(--nui-color-primary-subtle); }
+
+.nui-btn--outlined.nui-btn--secondary {
+  color: var(--nui-color-secondary-solid);
+  border-color: var(--nui-color-secondary-border);
+}
+.nui-btn--outlined.nui-btn--secondary:hover { background-color: var(--nui-color-secondary-subtle); }
+
+.nui-btn--outlined.nui-btn--tertiary {
+  color: var(--nui-color-tertiary-solid);
+  border-color: var(--nui-color-tertiary-border);
+}
+.nui-btn--outlined.nui-btn--tertiary:hover { background-color: var(--nui-color-tertiary-subtle); }
+
+.nui-btn--outlined.nui-btn--error {
+  color: var(--nui-color-error-solid);
+  border-color: var(--nui-color-error-border);
+}
+.nui-btn--outlined.nui-btn--error:hover { background-color: var(--nui-color-error-subtle); }
+
+.nui-btn--outlined.nui-btn--neutral {
+  color: var(--nui-color-neutral-700);
+  border-color: var(--nui-color-neutral-300);
+}
+.nui-btn--outlined.nui-btn--neutral:hover { background-color: var(--nui-color-neutral-50); }
+
+/* ─── Text variant ───────────────────────────────────────────────────────────── */
+.nui-btn--text {
+  background-color: transparent;
+  border: none;
+}
+.nui-btn--text.nui-btn--primary { color: var(--nui-color-primary-solid); }
+.nui-btn--text.nui-btn--primary:hover { background-color: var(--nui-color-primary-subtle); }
+
+.nui-btn--text.nui-btn--secondary { color: var(--nui-color-secondary-solid); }
+.nui-btn--text.nui-btn--secondary:hover { background-color: var(--nui-color-secondary-subtle); }
+
+.nui-btn--text.nui-btn--tertiary { color: var(--nui-color-tertiary-solid); }
+.nui-btn--text.nui-btn--tertiary:hover { background-color: var(--nui-color-tertiary-subtle); }
+
+.nui-btn--text.nui-btn--error { color: var(--nui-color-error-solid); }
+.nui-btn--text.nui-btn--error:hover { background-color: var(--nui-color-error-subtle); }
+
+/* ─── Elevated variant ───────────────────────────────────────────────────────── */
+.nui-btn--elevated {
+  background-color: var(--nui-color-surface, #fff);
+  box-shadow: var(--nui-elevation-sm, 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08));
+}
+.nui-btn--elevated.nui-btn--primary { color: var(--nui-color-primary-solid); }
+.nui-btn--elevated:hover { box-shadow: var(--nui-elevation-md, 0 4px 6px rgba(0,0,0,0.1)); }
+
+/* ─── States ─────────────────────────────────────────────────────────────────── */
+.nui-btn--disabled {
+  opacity: var(--nui-opacity-disabled, 0.5);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nui-btn--is-loading {
+  position: relative;
+  cursor: wait;
+}
+
+.nui-btn--full-width {
+  width: 100%;
+}
+
+/* ─── Focus ──────────────────────────────────────────────────────────────────── */
+.nui-btn:focus-visible {
+  outline: 2px solid var(--nui-color-outline-focus);
+  outline-offset: 2px;
+}
+
+/* ─── Inner elements ─────────────────────────────────────────────────────────── */
+.nui-btn__spinner {
+  display: inline-flex;
+  margin-right: 0.5rem;
+}
+
+.nui-btn__content {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nui-btn__icon-start {
+  margin-right: 0.25rem;
+}
+
+.nui-btn__icon-end {
+  margin-left: 0.25rem;
+}

@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UiToastContainerComponent, UiButtonComponent } from './shared/ui';
+import { UiToastContainerComponent } from './shared/ui';
+import { ButtonComponent } from './shared/components/button/button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, UiToastContainerComponent, UiButtonComponent],
+  imports: [RouterOutlet, UiToastContainerComponent, ButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

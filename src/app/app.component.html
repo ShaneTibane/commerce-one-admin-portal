@@ -1,0 +1,13 @@
+<div class="app-container">
+  <header class="app-header">
+    <ui-button [variant]="'outline'" [size]="'sm'" (click)="toggleTheme()">
+      {{ isDark() ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+    </ui-button>
+  </header>
+
+  <h1>Admin Portal</h1>
+  <p>Application is running.</p>
+</div>
+
+<router-outlet />
+<ui-toast-container />

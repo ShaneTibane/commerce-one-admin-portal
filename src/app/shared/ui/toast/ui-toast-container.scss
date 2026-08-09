@@ -1,0 +1,15 @@
+.ui-toast-container {
+  position: fixed;
+  right: var(--ui-space-4);
+  bottom: var(--ui-space-4);
+  z-index: var(--ui-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-3);
+  pointer-events: none;
+
+  ui-toast,
+  .ui-toast {
+    pointer-events: auto;
+  }
+}

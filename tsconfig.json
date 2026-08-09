@@ -1,0 +1,49 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@nexa-ui/angular": ["../../nexa-ui/packages/angular/src/index.ts"],
+      "@nexa-ui/themes": ["../../nexa-ui/packages/themes/src/index.ts"],
+      "@nexa-ui/design-tokens": ["../../nexa-ui/packages/design-tokens/src/index.ts"],
+      "@nexa-ui/button": ["../../nexa-ui/packages/button/src/index.ts"],
+      "@nexa-ui/navigation": ["../../nexa-ui/packages/navigation/src/index.ts"],
+      "@nexa-ui/selection": ["../../nexa-ui/packages/selection/src/index.ts"],
+      "@nexa-ui/data-display": ["../../nexa-ui/packages/data-display/src/index.ts"],
+      "@nexa-ui/dialogs": ["../../nexa-ui/packages/dialogs/src/index.ts"],
+      "@nexa-ui/forms": ["../../nexa-ui/packages/forms/src/index.ts"],
+      "@nexa-ui/icons": ["../../nexa-ui/packages/icons/src/index.ts"],
+      "@nexa-ui/admin": ["../../nexa-ui/packages/admin/src/index.ts"],
+      "@nexa-ui/headless": ["../../nexa-ui/packages/headless/src/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+:root {
+  /* Brand */
+  --ui-color-primary: #2563eb;
+  --ui-color-primary-hover: #1d4ed8;
+  --ui-color-primary-active: #1e40af;
+  --ui-color-primary-subtle: #eff6ff;
+
+  /* Semantic */
+  --ui-color-success: #16a34a;
+  --ui-color-success-subtle: #f0fdf4;
+  --ui-color-warning: #d97706;
+  --ui-color-warning-subtle: #fffbeb;
+  --ui-color-danger: #dc2626;
+  --ui-color-danger-hover: #b91c1c;
+  --ui-color-danger-subtle: #fef2f2;
+  --ui-color-info: #0891b2;
+  --ui-color-info-subtle: #ecfeff;
+
+  /* Neutrals */
+  --ui-color-white: #ffffff;
+  --ui-color-black: #0f172a;
+  --ui-color-gray-50: #f8fafc;
+  --ui-color-gray-100: #f1f5f9;
+  --ui-color-gray-200: #e2e8f0;
+  --ui-color-gray-300: #cbd5e1;
+  --ui-color-gray-400: #94a3b8;
+  --ui-color-gray-500: #64748b;
+  --ui-color-gray-600: #475569;
+  --ui-color-gray-700: #334155;
+  --ui-color-gray-800: #1e293b;
+  --ui-color-gray-900: #0f172a;
+
+  /* Surfaces */
+  --ui-surface-page: var(--ui-color-gray-50);
+  --ui-surface-card: var(--ui-color-white);
+  --ui-surface-overlay: rgba(15, 23, 42, 0.45);
+
+  /* Text */
+  --ui-text-primary: var(--ui-color-gray-900);
+  --ui-text-secondary: var(--ui-color-gray-600);
+  --ui-text-muted: var(--ui-color-gray-500);
+  --ui-text-inverse: var(--ui-color-white);
+  --ui-text-link: var(--ui-color-primary);
+
+  /* Borders */
+  --ui-border-color: var(--ui-color-gray-200);
+  --ui-border-color-strong: var(--ui-color-gray-300);
+  --ui-border-radius-sm: 0.375rem;
+  --ui-border-radius-md: 0.5rem;
+  --ui-border-radius-lg: 0.75rem;
+  --ui-border-radius-full: 9999px;
+
+  /* Shadows */
+  --ui-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --ui-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --ui-shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+  /* Spacing */
+  --ui-space-1: 0.25rem;
+  --ui-space-2: 0.5rem;
+  --ui-space-3: 0.75rem;
+  --ui-space-4: 1rem;
+  --ui-space-5: 1.25rem;
+  --ui-space-6: 1.5rem;
+  --ui-space-8: 2rem;
+
+  /* Typography */
+  --ui-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ui-font-size-xs: 0.75rem;
+  --ui-font-size-sm: 0.875rem;
+  --ui-font-size-md: 1rem;
+  --ui-font-size-lg: 1.125rem;
+  --ui-font-size-xl: 1.25rem;
+  --ui-font-weight-medium: 500;
+  --ui-font-weight-semibold: 600;
+  --ui-line-height-tight: 1.25;
+  --ui-line-height-normal: 1.5;
+
+  /* Controls */
+  --ui-control-height-sm: 2rem;
+  --ui-control-height-md: 2.5rem;
+  --ui-control-height-lg: 3rem;
+  --ui-focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.25);
+
+  /* Z-index */
+  --ui-z-dropdown: 100;
+  --ui-z-modal: 200;
+  --ui-z-toast: 300;
+
+  /* Motion */
+  --ui-transition-fast: 150ms ease;
+  --ui-transition-normal: 200ms ease;
+}

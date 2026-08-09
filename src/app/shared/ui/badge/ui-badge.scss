@@ -1,0 +1,63 @@
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-2);
+  font-weight: var(--ui-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+
+  &--pill {
+    border-radius: var(--ui-border-radius-full);
+  }
+
+  &:not(&--pill) {
+    border-radius: var(--ui-border-radius-sm);
+  }
+
+  &--sm {
+    padding: 0.125rem 0.5rem;
+    font-size: var(--ui-font-size-xs);
+  }
+
+  &--md {
+    padding: 0.25rem 0.625rem;
+    font-size: var(--ui-font-size-sm);
+  }
+
+  &--default {
+    background: var(--ui-color-gray-100);
+    color: var(--ui-color-gray-700);
+  }
+
+  &--primary {
+    background: var(--ui-color-primary-subtle);
+    color: var(--ui-color-primary);
+  }
+
+  &--success {
+    background: var(--ui-color-success-subtle);
+    color: var(--ui-color-success);
+  }
+
+  &--warning {
+    background: var(--ui-color-warning-subtle);
+    color: var(--ui-color-warning);
+  }
+
+  &--danger {
+    background: var(--ui-color-danger-subtle);
+    color: var(--ui-color-danger);
+  }
+
+  &--info {
+    background: var(--ui-color-info-subtle);
+    color: var(--ui-color-info);
+  }
+
+  &__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}

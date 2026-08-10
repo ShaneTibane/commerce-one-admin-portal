@@ -7,6 +7,8 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
+import { InputComponent } from '../../shared/components/input/input.component';
+import type { InputIcon } from '../../shared/components/input/input.component';
 
 // ─── Configuration interfaces (mirrors @nexa-ui/angular header types) ─────────
 
@@ -52,6 +54,7 @@ export interface HeaderSearchConfig {
 @Component({
   selector: 'app-header',
   standalone: true,
+  imports: [InputComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   templateUrl: './header.component.html',
@@ -90,6 +93,11 @@ export class HeaderComponent {
   readonly tenantDropdownOpen = signal(false);
   readonly searchValue = signal('');
 
+  readonly searchIcon: InputIcon = {
+    path: 'M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z',
+    position: 'left',
+  };
+
   readonly unreadCount = computed(() =>
     this.notifications().filter(n => !n.read).length
   );
@@ -111,8 +119,8 @@ export class HeaderComponent {
     this.brandClick.emit();
   }
 
-  onSearchInput(event: Event): void {
-    this.searchValue.set((event.target as HTMLInputElement).value);
+  onSearchInput(value: string): void {
+    this.searchValue.set(value);
   }
 
   onSearchKeydown(event: KeyboardEvent): void {

@@ -34,25 +34,18 @@
 
   <div class="nui-header__center">
     @if (search().enabled !== false) {
-      <div class="nui-header__search">
-        <svg class="nui-header__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg>
-        <input
-          type="text"
-          class="nui-header__search-input"
-          [placeholder]="search().placeholder || 'Search anything...'"
-          [value]="searchValue()"
-          (input)="onSearchInput($event)"
-          (keydown)="onSearchKeydown($event)"
-          (focus)="onSearchFocus()"
-          aria-label="Search"
-        />
-        @if (search().shortcutHint) {
-          <span class="nui-header__search-shortcut">{{ search().shortcutHint }}</span>
-        }
-      </div>
+      <app-input
+        type="search"
+        name="header-search"
+        [placeholder]="search().placeholder || 'Search anything...'"
+        size="sm"
+        [icon]="searchIcon"
+        [shortcutHint]="search().shortcutHint || null"
+        [ariaLabel]="'Search'"
+        (inputChange)="onSearchInput($event)"
+        (inputKeydown)="onSearchKeydown($event)"
+        (inputFocus)="onSearchFocus()"
+      />
     }
 
     @if (showTenantSelector() && selectedTenant()) {

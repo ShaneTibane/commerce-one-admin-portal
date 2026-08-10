@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@nexa-ui/button": ["../../../nexa-ui/packages/button/src/index.ts"],
+      "@nexa-ui/inputs": ["../../../nexa-ui/packages/inputs/src/index.ts"],
       "@nexa-ui/themes": ["../../../nexa-ui/packages/themes/src/index.ts"],
       "@nexa-ui/design-tokens": ["../../../nexa-ui/packages/design-tokens/src/index.ts"],
       "@nexa-ui/navigation": ["../../../nexa-ui/packages/navigation/src/index.ts"],

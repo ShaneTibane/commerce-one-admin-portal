@@ -1,0 +1,83 @@
+@if (label()) {
+  <label class="nui-input__label" [attr.for]="name() || null">{{ label() }}</label>
+}
+
+<div [class]="wrapperClasses()">
+  @if (prefix()) {
+    <span class="nui-input__prefix">{{ prefix() }}</span>
+  }
+
+  @if (icon() && iconPosition() === 'left') {
+    <button
+      type="button"
+      class="nui-input__icon nui-input__icon--left"
+      aria-label="Icon action"
+      [tabIndex]="0"
+      (click)="onIconClick()"
+    >
+      @if (icon()!.svg) {
+        <span [innerHTML]="icon()!.svg"></span>
+      } @else if (icon()!.path) {
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path [attr.d]="icon()!.path" />
+        </svg>
+      } @else {
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      }
+    </button>
+  }
+
+  <input
+    [type]="type()"
+    class="nui-input__field"
+    [placeholder]="placeholder()"
+    [value]="value()"
+    [disabled]="disabled()"
+    [readOnly]="readonly()"
+    [attr.name]="name() || null"
+    [attr.aria-label]="ariaLabel() || label() || placeholder()"
+    [attr.aria-invalid]="error() ? 'true' : null"
+    [attr.aria-describedby]="error() ? name() + '-error' : hint() ? name() + '-hint' : null"
+    (input)="onInput($event)"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    (keydown)="onKeydown($event)"
+  />
+
+  @if (shortcutHint() && !value()) {
+    <span class="nui-input__shortcut">{{ shortcutHint() }}</span>
+  }
+
+  @if (icon() && iconPosition() === 'right') {
+    <button
+      type="button"
+      class="nui-input__icon nui-input__icon--right"
+      aria-label="Icon action"
+      [tabIndex]="0"
+      (click)="onIconClick()"
+    >
+      @if (icon()!.svg) {
+        <span [innerHTML]="icon()!.svg"></span>
+      } @else if (icon()!.path) {
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path [attr.d]="icon()!.path" />
+        </svg>
+      }
+    </button>
+  }
+
+  @if (suffix()) {
+    <span class="nui-input__suffix">{{ suffix() }}</span>
+  }
+</div>
+
+@if (hint() && !error()) {
+  <span class="nui-input__hint" [attr.id]="name() + '-hint'">{{ hint() }}</span>
+}
+
+@if (error()) {
+  <span class="nui-input__error" [attr.id]="name() + '-error'" role="alert">{{ error() }}</span>
+}

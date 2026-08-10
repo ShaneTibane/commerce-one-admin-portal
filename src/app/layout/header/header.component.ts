@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { InputComponent } from '../../shared/components/input/input.component';
 import type { InputIcon } from '../../shared/components/input/input.component';
+import { SelectComponent } from '../../shared/components/select/select.component';
+import type { SelectOption } from '../../shared/components/select/select.component';
 
 // ─── Configuration interfaces (mirrors @nexa-ui/angular header types) ─────────
 
@@ -54,7 +56,7 @@ export interface HeaderSearchConfig {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [InputComponent],
+  imports: [InputComponent, SelectComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   templateUrl: './header.component.html',
@@ -98,6 +100,12 @@ export class HeaderComponent {
     position: 'left',
   };
 
+  readonly tenantOptions = computed<SelectOption[]>(() =>
+    this.tenants().map(t => ({ value: t.id, label: t.name, icon: t.icon }))
+  );
+
+  readonly selectedTenantId = computed(() => this.selectedTenant()?.id || '');
+
   readonly unreadCount = computed(() =>
     this.notifications().filter(n => !n.read).length
   );
@@ -140,6 +148,14 @@ export class HeaderComponent {
   selectTenant(tenant: HeaderTenant): void {
     this.tenantDropdownOpen.set(false);
     this.tenantChange.emit(tenant);
+  }
+
+  onTenantSelect(value: string | string[]): void {
+    const id = Array.isArray(value) ? value[0] : value;
+    const tenant = this.tenants().find(t => t.id === id);
+    if (tenant) {
+      this.tenantChange.emit(tenant);
+    }
   }
 
   onNotificationClick(): void {

@@ -34,7 +34,8 @@
               "../../../nexa-ui/packages/styles/nui-button.css",
               "../../../nexa-ui/packages/styles/nui-header.css",
               "../../../nexa-ui/packages/styles/nui-sidebar.css",
-              "../../../nexa-ui/packages/styles/nui-input.css"
+              "../../../nexa-ui/packages/styles/nui-input.css",
+              "../../../nexa-ui/packages/styles/nui-select.css"
             ]
           },
           "configurations": {
@@ -96,7 +97,8 @@
               "../../../nexa-ui/packages/styles/nui-button.css",
               "../../../nexa-ui/packages/styles/nui-header.css",
               "../../../nexa-ui/packages/styles/nui-sidebar.css",
-              "../../../nexa-ui/packages/styles/nui-input.css"
+              "../../../nexa-ui/packages/styles/nui-input.css",
+              "../../../nexa-ui/packages/styles/nui-select.css"
             ]
           }
         }

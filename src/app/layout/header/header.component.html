@@ -49,46 +49,15 @@
     }
 
     @if (showTenantSelector() && selectedTenant()) {
-      <div class="nui-header__tenant">
-        <button
-          class="nui-header__tenant-trigger"
-          type="button"
-          aria-haspopup="listbox"
-          [attr.aria-expanded]="tenantDropdownOpen()"
-          (click)="toggleTenantDropdown()"
-        >
-          @if (selectedTenant()?.icon) {
-            <img [src]="selectedTenant()!.icon" alt="" class="nui-header__tenant-icon" />
-          } @else {
-            <svg class="nui-header__tenant-icon-default" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 21V3h18v18H3zm2-2h14V5H5v14zm2-2h4v-4H7v4zm0-6h4V7H7v4zm6 6h4v-4h-4v4zm0-6h4V7h-4v4z"/>
-            </svg>
-          }
-          <div class="nui-header__tenant-info">
-            <span class="nui-header__tenant-label">{{ tenantLabel() }}</span>
-            <span class="nui-header__tenant-name">{{ selectedTenant()!.name }}</span>
-          </div>
-          <svg class="nui-header__tenant-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </button>
-        @if (tenantDropdownOpen()) {
-          <ul class="nui-header__tenant-dropdown" role="listbox">
-            @for (tenant of tenants(); track tenant.id) {
-              <li
-                role="option"
-                class="nui-header__tenant-option"
-                [class.nui-header__tenant-option--selected]="tenant.id === selectedTenant()?.id"
-                [attr.aria-selected]="tenant.id === selectedTenant()?.id"
-                (click)="selectTenant(tenant)"
-              >
-                {{ tenant.name }}
-              </li>
-            }
-          </ul>
-        }
-      </div>
-    }
+      <app-select
+        [options]="tenantOptions()"
+        [placeholder]="tenantLabel()"
+        [label]="tenantLabel()"
+        [showIcon]="true"
+        [disabled]="false"
+        (selectionChange)="onTenantSelect($event)"
+      />
+    }  
   </div>
 
   <div class="nui-header__right">

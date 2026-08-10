@@ -1,0 +1,77 @@
+<div class="nui-select">
+  <!-- Trigger -->
+  <button
+    type="button"
+    class="nui-select__trigger"
+    [disabled]="disabled()"
+    [attr.aria-expanded]="isOpen()"
+    [attr.aria-haspopup]="'listbox'"
+    [attr.aria-disabled]="disabled() || null"
+    (click)="onTriggerClick()"
+    (keydown)="onKeydown($event)"
+  >
+    <!-- Icon -->
+    @if (showIcon()) {
+      <span class="nui-select__icon">
+        @if (selectedOption()?.icon) {
+          <img [src]="selectedOption()!.icon" alt="" class="nui-select__icon-img" />
+        } @else if (defaultIcon()) {
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path [attr.d]="defaultIcon()" />
+          </svg>
+        } @else {
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 21V3h18v18H3zm2-2h14V5H5v14zm2-2h4v-4H7v4zm0-6h4V7H7v4zm6 6h4v-4h-4v4zm0-6h4V7h-4v4z"/>
+          </svg>
+        }
+      </span>
+    }
+
+    <!-- Label + Value -->
+    <span class="nui-select__trigger-content">
+      @if (label()) {
+        <span class="nui-select__label">{{ label() }}</span>
+      }
+      <span class="nui-select__value">{{ instance().displayValue || placeholder() }}</span>
+    </span>
+
+    <!-- Chevron -->
+    <svg class="nui-select__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  </button>
+
+  <!-- Listbox -->
+  @if (isOpen()) {
+    <ul class="nui-select__listbox" role="listbox">
+      @if (searchable()) {
+        <li class="nui-select__search">
+          <input
+            type="text"
+            class="nui-input__field"
+            placeholder="Search..."
+            [value]="query()"
+            (input)="onSearchInput($event)"
+            aria-label="Search options"
+          />
+        </li>
+      }
+      @for (option of instance().filteredOptions; track option.value; let i = $index) {
+        <li
+          class="nui-select__option"
+          [class.nui-select__option--selected]="instance().selected.includes(option.value)"
+          [class.nui-select__option--focused]="focusedIndex() === i"
+          [attr.aria-selected]="instance().selected.includes(option.value)"
+          [attr.aria-disabled]="option.disabled || null"
+          role="option"
+          (click)="onOptionClick(option.value)"
+        >
+          @if (showIcon() && option.icon) {
+            <img [src]="option.icon" alt="" class="nui-select__option-icon" />
+          }
+          {{ option.label }}
+        </li>
+      }
+    </ul>
+  }
+</div>

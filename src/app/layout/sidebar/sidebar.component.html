@@ -1,0 +1,95 @@
+<aside [class]="sidebarClasses()" [style.width]="isCollapsed() ? collapsedWidth() : width()">
+  <!-- Brand -->
+  <div class="nui-sidebar__brand" (click)="onBrandClick()" role="button" tabindex="0" (keydown.enter)="onBrandClick()">
+    @if (brand().logoSrc) {
+      <img [src]="brand().logoSrc" [alt]="brand().logoAlt || brand().name || 'Logo'" class="nui-sidebar__logo" />
+    }
+    @if (!isCollapsed()) {
+      @if (brand().name) {
+        <div class="nui-sidebar__brand-text">
+          <span class="nui-sidebar__brand-name">{{ brand().name }}</span>
+          @if (brand().subtitle) {
+            <span class="nui-sidebar__brand-subtitle">{{ brand().subtitle }}</span>
+          }
+        </div>
+      }
+    }
+  </div>
+
+  <!-- Navigation Groups -->
+  <nav class="nui-sidebar__nav">
+    @for (group of groups(); track group.label || $index) {
+      <div class="nui-sidebar__group">
+        @if (group.label && !isCollapsed()) {
+          <span class="nui-sidebar__group-label">{{ group.label }}</span>
+        }
+        @if (group.label && isCollapsed()) {
+          <hr class="nui-sidebar__group-divider" />
+        }
+        <ul class="nui-sidebar__list">
+          @for (item of group.items; track item.id) {
+            <li class="nui-sidebar__list-item">
+              <button
+                type="button"
+                class="nui-sidebar__item"
+                [class.nui-sidebar__item--active]="isActive(item)"
+                [class.nui-sidebar__item--disabled]="item.disabled"
+                [attr.aria-current]="isActive(item) ? 'page' : null"
+                [attr.aria-disabled]="item.disabled || null"
+                [title]="isCollapsed() ? item.label : ''"
+                (click)="onItemClick(item)"
+              >
+                @if (item.iconSvg) {
+                  <span class="nui-sidebar__item-icon" [innerHTML]="item.iconSvg"></span>
+                } @else if (item.icon) {
+                  <span class="nui-sidebar__item-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path [attr.d]="item.icon" />
+                    </svg>
+                  </span>
+                }
+                @if (!isCollapsed()) {
+                  <span class="nui-sidebar__item-label">{{ item.label }}</span>
+                  @if (item.badge) {
+                    <span
+                      class="nui-sidebar__item-badge"
+                      [class.nui-sidebar__item-badge--error]="item.badgeColor === 'error'"
+                      [class.nui-sidebar__item-badge--warning]="item.badgeColor === 'warning'"
+                      [class.nui-sidebar__item-badge--success]="item.badgeColor === 'success'"
+                    >{{ item.badge }}</span>
+                  }
+                }
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </nav>
+
+  <!-- Footer / Collapse Toggle -->
+  <div class="nui-sidebar__footer">
+    @if (showCollapseToggle()) {
+      <button
+        type="button"
+        class="nui-sidebar__collapse-btn"
+        [attr.aria-label]="isCollapsed() ? expandLabel() : collapseLabel()"
+        (click)="toggleCollapse()"
+      >
+        <svg
+          class="nui-sidebar__collapse-icon"
+          [class.nui-sidebar__collapse-icon--flipped]="isCollapsed()"
+          width="20" height="20" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"
+        >
+          <polyline points="11 17 6 12 11 7" />
+          <polyline points="18 17 13 12 18 7" />
+        </svg>
+        @if (!isCollapsed()) {
+          <span class="nui-sidebar__collapse-label">{{ collapseLabel() }}</span>
+        }
+      </button>
+    }
+  </div>
+</aside>

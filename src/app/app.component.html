@@ -1,21 +1,35 @@
-<app-header
-  [brand]="brand"
-  [search]="{ placeholder: 'Search anything...', shortcutHint: '⌘ K' }"
-  [tenants]="tenants"
-  [selectedTenant]="selectedTenant()"
-  tenantLabel="Tenant"
-  [user]="user"
-  [notifications]="notifications()"
-  (menuToggle)="toggleSidebar()"
-  (tenantChange)="onTenantChange($event)"
-  (searchSubmit)="onSearch($event)"
-  (notificationClick)="openNotifications()"
-  (helpClick)="openHelp()"
-  (userMenuClick)="toggleUserMenu()"
-/>
+<div class="app-shell">
+  <app-sidebar
+    [brand]="sidebarBrand"
+    [groups]="navGroups"
+    [activeItem]="activeNavItem()"
+    [collapsed]="sidebarCollapsed()"
+    theme="dark"
+    (itemClick)="navigate($event)"
+    (collapseChange)="onSidebarCollapse($event)"
+  />
 
-<main class="app-main">
-  <router-outlet />
-</main>
+  <div class="app-shell__content">
+    <app-header
+      [brand]="brand"
+      [search]="{ placeholder: 'Search anything...', shortcutHint: '⌘ K' }"
+      [tenants]="tenants"
+      [selectedTenant]="selectedTenant()"
+      tenantLabel="Tenant"
+      [user]="user"
+      [notifications]="notifications()"
+      (menuToggle)="toggleSidebar()"
+      (tenantChange)="onTenantChange($event)"
+      (searchSubmit)="onSearch($event)"
+      (notificationClick)="openNotifications()"
+      (helpClick)="openHelp()"
+      (userMenuClick)="toggleUserMenu()"
+    />
+
+    <main class="app-main">
+      <router-outlet />
+    </main>
+  </div>
+</div>
 
 <ui-toast-container />
